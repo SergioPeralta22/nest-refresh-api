@@ -1,23 +1,24 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { v4 as uuid } from 'uuid';
 import { Car } from './interfaces/car.interface';
 
 @Injectable()
 export class CarsService {
   private cars: Car[] = [
     {
-      id: 1,
+      id: uuid(),
       brand: 'Ford',
       model: 'Fiesta',
       year: 2019,
     },
     {
-      id: 2,
+      id: uuid(),
       brand: 'Ford',
       model: 'Mustang',
       year: 2017,
     },
     {
-      id: 3,
+      id: uuid(),
       brand: 'Mazda',
       model: 'CX3',
       year: 2020,
@@ -37,11 +38,7 @@ export class CarsService {
   }
 
   create(car: Car) {
-    const newCar = {
-      id: this.cars.length + 1,
-      ...car,
-    };
-
+    const newCar = { id: uuid(), ...car };
     this.cars.push(newCar);
     return newCar;
   }
