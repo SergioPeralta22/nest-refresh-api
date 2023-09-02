@@ -3,7 +3,7 @@ import {
   Controller,
   Get,
   Param,
-  ParseIntPipe,
+  ParseUUIDPipe,
   Patch,
   Post,
 } from '@nestjs/common';
@@ -20,7 +20,7 @@ export class CarsController {
   }
 
   @Get(':id')
-  getCarByID(@Param('id') id: string) {
+  getCarByID(@Param('id', ParseUUIDPipe) id: string) {
     return this.carsService.findOne(id);
   }
   // cars/
@@ -30,7 +30,7 @@ export class CarsController {
   }
 
   @Patch(':id')
-  updateCar(@Param('id', ParseIntPipe) id: string, @Body() body: Car) {
+  updateCar(@Param('id', ParseUUIDPipe) id: string, @Body() body: Car) {
     return this.carsService.update(id, body);
   }
 }
