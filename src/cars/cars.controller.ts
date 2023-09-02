@@ -8,6 +8,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
+import { CreateCarDto } from './dto/create-car.dto';
 import { Car } from './interfaces/car.interface';
 
 @Controller('cars')
@@ -25,8 +26,8 @@ export class CarsController {
   }
   // cars/
   @Post()
-  createCar(@Body() body: Car) {
-    return this.carsService.create(body);
+  createCar(@Body() createCar: CreateCarDto) {
+    return this.carsService.create(createCar);
   }
 
   @Patch(':id')

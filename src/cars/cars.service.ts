@@ -37,8 +37,11 @@ export class CarsService {
     return car;
   }
 
-  create(car: Car) {
-    const newCar = { id: uuid(), ...car };
+  create(car) {
+    const newCar = {
+      id: uuid(),
+      ...car,
+    };
     this.cars.push(newCar);
     return newCar;
   }
