@@ -8,6 +8,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
+import { Car } from './interfaces/car.interface';
 
 @Controller('cars')
 export class CarsController {
@@ -19,17 +20,17 @@ export class CarsController {
   }
 
   @Get(':id')
-  getCarByID(@Param('id', ParseIntPipe) id: number) {
+  getCarByID(@Param('id') id: string) {
     return this.carsService.findOne(id);
   }
   // cars/
   @Post()
-  createCar(@Body() body) {
+  createCar(@Body() body: Car) {
     return this.carsService.create(body);
   }
 
   @Patch(':id')
-  updateCar(@Param('id', ParseIntPipe) id: number, @Body() body) {
+  updateCar(@Param('id', ParseIntPipe) id: string, @Body() body: Car) {
     return this.carsService.update(id, body);
   }
 }

@@ -29,7 +29,7 @@ export class CarsService {
     return this.cars;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     const car = this.cars.find((car) => car.id === id);
     if (!car) {
       throw new NotFoundException(`Car with id ${id} not found`);
@@ -43,7 +43,7 @@ export class CarsService {
     return newCar;
   }
 
-  update(id: number, car: Car) {
+  update(id: string, car: Car) {
     const existingCar = this.findOne(id);
     if (existingCar) {
       const index = this.cars.findIndex((car) => car.id === id);
