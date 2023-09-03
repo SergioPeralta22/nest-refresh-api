@@ -3,7 +3,7 @@ import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
 export class CreateCarDto {
   @IsString()
   @IsNotEmpty()
-  readonly make: string;
+  readonly brand: string;
 
   @IsString()
   @IsNotEmpty()
